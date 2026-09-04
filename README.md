@@ -89,6 +89,18 @@ toolbox::startLog("game.log");
 
 If the file cannot be opened, the logger writes the failure and message to `std::cerr` instead of crashing.
 
+## Console input
+
+`getln` reads a complete line and keeps asking until the value has the requested type and is inside any supplied bounds:
+
+```cpp
+std::string name = toolbox::getln("Name");
+int age = toolbox::getln("Age", 0, 120);
+int score = toolbox::getln("Score", 0, 100, int{});
+```
+
+The variable name is the only required argument. The optional arguments are the minimum, maximum, and a type tag such as `int{}` or `std::string{}`. You can also specify only the type with `toolbox::getln<int>("Age")`.
+
 ## Complete example
 
 ```cpp
