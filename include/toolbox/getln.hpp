@@ -19,9 +19,11 @@ inline bool parseLine(const std::string& line, T& value) {
         return true;
     } else {
         std::istringstream stream(line);
-        stream >> value;
+        if (!(stream >> value)) {
+            return false;
+        }
         stream >> std::ws;
-        return !stream.fail() && stream.eof();
+        return stream.eof();
     }
 }
 
